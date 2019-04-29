@@ -3,6 +3,7 @@ if (!process.env.PORT) require('dotenv').config()
 const { createServer } = require('http')
 
 const serveStaticFile = require('../lib/responder')
+const errors = require('../config/errors')
 
 const { PORT, APP_NAME } = process.env
 
@@ -10,8 +11,21 @@ module.exports = () => {
   const server = createServer(async ({ url }, response) => {
     const urlTokens = url.split('.')
     const extension = urlTokens.length > 1 ? `.${urlTokens[urlTokens.length - 1].toLowerCase().trim()}` : false
+    const isRoot = url === '/'
+    const path = isRoot ? '/index.html' : url
 
-    return await serveStaticFile({ file: url, extension }, response)
+    try {
+      return await serveStaticFile({ file: path, extension: isRoot ? 'html' : extension }, response)
+    } catch (error) {
+      console.error(error)
+      const errorData = errors(error)
+
+      return await serveStaticFile({
+        file: '/error.html',
+        extension: 'html',
+        statusCode: errorData.code
+      }, response)
+    }
   })
 
   server.on('error', error => {
@@ -23,7 +37,7 @@ module.exports = () => {
 
   server.on('request', ({ method, url }) => {
     const now = new Date()
-    console.info(`=> ${now.toUTCString()} – ${method} ${url}}`)
+    console.info(`=> ${now.toUTCString()} – ${method} ${url}`)
   })
 
   server.listen(PORT, async () => {
