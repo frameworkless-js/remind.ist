@@ -1,0 +1,27 @@
+{
+  "name": "remind.ist",
+  "version": "0.0.0",
+  "description": "Schedule a reminder for yourself, by email",
+  "main": "app.js",
+  "dependencies": {
+    "glob": "^7.1.3",
+    "mime-types": "^2.1.24"
+  },
+  "devDependencies": {
+    "dotenv": "^7.0.0",
+    "nodemon": "^1.18.11"
+  },
+  "scripts": {
+    "start": "nodemon --inspect -e js,html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtimofiiv/remind.ist.git"
+  },
+  "author": "mtimofiiv <git@fiiv.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtimofiiv/remind.ist/issues"
+  },
+  "homepage": "https://github.com/mtimofiiv/remind.ist#readme"
+}
