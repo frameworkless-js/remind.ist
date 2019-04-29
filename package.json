@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/mtimofiiv/remind.ist/issues"
   },
-  "homepage": "https://github.com/mtimofiiv/remind.ist#readme"
+  "homepage": "https://github.com/mtimofiiv/remind.ist#readme",
+  "engines": {
+    "node": ">=12"
+  }
 }
