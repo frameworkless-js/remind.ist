@@ -11,7 +11,7 @@ module.exports = () => {
   const server = createServer(async ({ url }, response) => {
     const urlTokens = url.split('.')
     const extension = urlTokens.length > 1 ? `${urlTokens[urlTokens.length - 1].toLowerCase().trim()}` : false
-    const isRoot = url === '/'
+    const isRoot = [ '', '/' ].indexOf(url) > -1
     const path = isRoot ? '/index.html' : url
 
     try {
