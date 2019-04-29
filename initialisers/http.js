@@ -18,6 +18,9 @@ module.exports = () => {
       responseParams.extension = extension
     } else {
       responseParams.method = method
+      responseParams.context = {
+        app_name: APP_NAME
+      }
     }
 
     try {
