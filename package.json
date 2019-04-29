@@ -4,7 +4,6 @@
   "description": "Schedule a reminder for yourself, by email",
   "main": "app.js",
   "dependencies": {
-    "glob": "^7.1.3",
     "mime-types": "^2.1.24"
   },
   "devDependencies": {

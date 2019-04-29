@@ -10,7 +10,7 @@ const { PORT, APP_NAME } = process.env
 module.exports = () => {
   const server = createServer(async ({ url }, response) => {
     const urlTokens = url.split('.')
-    const extension = urlTokens.length > 1 ? `.${urlTokens[urlTokens.length - 1].toLowerCase().trim()}` : false
+    const extension = urlTokens.length > 1 ? `${urlTokens[urlTokens.length - 1].toLowerCase().trim()}` : false
     const isRoot = url === '/'
     const path = isRoot ? '/index.html' : url
 
