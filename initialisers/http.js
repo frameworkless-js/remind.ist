@@ -30,7 +30,7 @@ module.exports = () => {
       const errorData = errors(error)
 
       return await serveStaticFile({
-        file: '/error.html',
+        path: '/error.html',
         extension: 'html',
         statusCode: errorData.code
       }, response)
