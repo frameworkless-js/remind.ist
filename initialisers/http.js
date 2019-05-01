@@ -8,16 +8,16 @@ const errors = require('../config/errors')
 const { PORT, APP_NAME } = process.env
 
 module.exports = () => {
-  const server = createServer(async ({ url, method }, response) => {
-    const urlTokens = url.split('.')
+  const server = createServer(async (request, response) => {
+    const urlTokens = request.url.split('.')
     const extension = urlTokens.length > 1 ? urlTokens[urlTokens.length - 1].toLowerCase().trim() : false
     const serveResponse = extension ? serveStaticFile : serveRoute
-    const responseParams = { path: url }
+    const responseParams = { path: request.url }
 
     if (extension) {
       responseParams.extension = extension
     } else {
-      responseParams.method = method
+      responseParams.request = request
       responseParams.context = {
         app_name: APP_NAME
       }
