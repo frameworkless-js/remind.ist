@@ -85,3 +85,6 @@ typings/
 
 .DS_Store
 .env
+
+# Because I am sick of messing with the merge conflicts of this file
+package-lock.json
