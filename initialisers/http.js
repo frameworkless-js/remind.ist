@@ -7,7 +7,7 @@ const errors = require('../config/errors')
 
 const { PORT, APP_NAME } = process.env
 
-module.exports = () => {
+module.exports = ({ db }) => {
   const server = createServer(async (request, response) => {
     const urlTokens = request.url.split('.')
     const extension = urlTokens.length > 1 ? urlTokens[urlTokens.length - 1].toLowerCase().trim() : false
@@ -21,6 +21,7 @@ module.exports = () => {
       responseParams.context = {
         app_name: APP_NAME
       }
+      responseParams.db = db
     }
 
     try {

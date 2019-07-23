@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+if (!process.env.DATABASE_URL) require('dotenv').config()
+
+const { readFileSync } = require('fs')
+
+const db = require('../../initialisers/postgres')
+
+const run = () => new Promise(async resolve => {
+  const schema = readFileSync('./sql/schema.sql', { encoding: 'utf8' })
+
+try {
+    console.info(`=> Running db query:\n`, schema)
+    await db.query(schema)
+  } catch (error) {
+    console.error(`=> Error running query:\n`, schema, error)
+    return resolve(1)
+  }
+
+  return resolve(0)
+})
+
+run().then(process.exit)

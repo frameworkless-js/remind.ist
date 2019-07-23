@@ -4,16 +4,18 @@
   "description": "Schedule a reminder for yourself, by email",
   "main": "app.js",
   "dependencies": {
+    "@frameworkless/bodyparser": "^1.0.0",
     "glob": "^7.1.3",
     "handlebars": "^4.1.2",
-    "mime-types": "^2.1.24"
+    "mime-types": "^2.1.24",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "dotenv": "^7.0.0",
     "nodemon": "^1.18.11"
   },
   "scripts": {
-    "start": "nodemon --inspect -e js,html,hbs"
+    "start": "nodemon --inspect -e js,html,hbs,sql"
   },
   "repository": {
     "type": "git",
