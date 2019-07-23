@@ -7,14 +7,18 @@
 <section>
   <form action="/new" method="POST">
     <div>
-      <input type="email" name="email" id="email" placeholder="your email"
+      <input type="email" name="email" id="email" placeholder="your email">
     </div>
     <div>
       <textarea name="message" id="message" placeholder="type your message to yourself" rows="10" cols="50"></textarea>
     </div>
 
     <div>
-      <button type="submit">Submit</button>
+      <input type="date" id="send_at" name="send_at">
+    </div>
+
+    <div>
+      <button type="submit">Send this to me!</button>
     </div>
   </form>
 </section>
