@@ -1,0 +1,200 @@
+html, body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: $font-spacing;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  color: $text;
+  background: $background;
+  font-family: $font-family;
+}
+
+a, a:visited {
+  color: $primary;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  background: white;
+}
+
+section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary;
+  padding: 15px 0;
+}
+
+h1 { font-size: 200%; }
+h2 { font-size: 180%; }
+h3 { font-size: 160%; }
+h4 { font-size: 140%; }
+h5 { font-size: 120%; }
+h6 { font-size: 100%; }
+
+p {
+  margin: 10px 0;
+}
+
+ul {
+  width: 100%;
+
+  li {
+    margin-left: 20px;
+  }
+}
+
+strong { font-weight: bold; }
+
+blockquote {
+  background: lighten($subtle-shade, 10%);
+  width: 100%;
+  padding: 5px;
+  margin: 30px 0;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+}
+
+.flex.vertical {
+  flex-direction: column;
+  height: 100%;
+}
+
+.flex.vertical.vcentered {
+  justify-content: center;
+}
+
+.flex.vertical.vcentered > * {
+  flex-grow: 0;
+}
+
+.flex.no-gutters {
+  justify-content: space-between;
+}
+
+.flex.no-gutters > * {
+  margin: 0;
+}
+
+.flex > * {
+  flex: 1;
+  margin: 1%;
+}
+
+.flex > .wide {
+  flex: 2;
+}
+
+figure img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.padded {
+  padding: 25px 0;
+}
+
+.vpadded {
+  padding: 0 25px;
+}
+
+header {
+  border: 1px solid $subtle-shade;
+  padding: 7px;
+  background-color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  width: 100%;
+  background-position: 20px center;
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+}
+
+.main {
+  border-right: 1px solid $subtle-shade;
+  border-left: 1px solid $subtle-shade;
+  width: 100%;
+  padding: 7px;
+  background: white;
+}
+
+footer {
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid $subtle-shade;
+  margin-top: 100px;
+}
+
+.masthead {
+  background: $primary;
+  margin-bottom: -30px;
+  background-image: linear-gradient(
+    132deg,
+    darken($primary, 15%) 0,
+    $primary 71%,
+    lighten($primary, 15%) 100%
+  );
+
+  h1 {
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+  }
+}
+
+.leadin {
+  font-size: 120%;
+  padding: 25px 0;
+}
+
+.box {
+  background: white;
+  border-left: 4px solid darken($primary, 15%);
+  padding: 25px;
+  box-shadow: 0 .5em 1em rgba(0, 0, 0, .2);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.primary-text {
+  color: $primary;
+}
+
+@media (max-width: 768px) {
+  section {
+    width: 98%;
+    box-shadow: none;
+    margin: 1%;
+  }
+
+  .box {
+    width: 90%;
+  }
+
+  .flex:not(.no-stack) { display: block; }
+  .flex > * { margin: 1%; }
+}

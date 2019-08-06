@@ -1,0 +1,32 @@
+form > div {
+  margin: 15px 0;
+
+  input, textarea {
+    font-size: $font-size;
+    font-family: $font-family;
+    border-width: 0;
+    border-bottom: 2px solid $primary;
+    padding: 8px;
+    background: lighten($subtle-shade, 10%);
+    width: 100%;
+
+    &:focus {
+      border-bottom: 2px solid $accent;
+    }
+  }
+}
+
+button, .button {
+  font-size: $font-size;
+  font-family: $font-family;
+  border-width: 0;
+  padding: 10px 14px 8px 14px;
+  background: $primary;
+  cursor: pointer;
+  color: white !important;
+  box-shadow: 0 .5em 1em rgba(0, 0, 0, .2);
+  font-weight: bold;
+  text-decoration: none !important;
+
+  &:hover { background: lighten($primary, 5%); }
+}

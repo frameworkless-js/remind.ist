@@ -13,28 +13,22 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <style>
-      body {
-        font-family: sans-serif;
-        line-height: 1.625;
-        font-weight: 300;
-        font-size: 1em;
-      }
-
-      .image {
-        text-align: center;
-        margin-top: 5%;
-      }
-
-      h1 {
-        text-align: center;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    {{>content}}
+    <main>
+      {{>content}}
+    </main>
 
-    <script async defer src="https://cdn.simpleanalytics.io/hello.js"></script>
-    <noscript><img src="https://api.simpleanalytics.io/hello.gif" alt=""></noscript>
+    <footer>
+      <section>
+        <p class="center">
+          <span class="primary-text">{{app_name}}</span> is a product built by <a href="https://fiiv.io?ref=remindist">@fiiv</a> and people following along as part of the <a href="https://frameworkless.js.org?ref=remindist">Frameworkless.js</a> online course.
+        </p>
+      </section>
+    </footer>
+
+    <script src="/app.js"></script>
   </body>
 </html>

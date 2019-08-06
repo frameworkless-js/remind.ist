@@ -1,11 +1,21 @@
-<h1>Data saved with ID: {{reminder_id}}</h1>
+<div class="masthead">
+  <section>
+    <h1>Awesome, I will remind you {{timeago send_at}}.</h1>
+  </section>
+</div>
 
-<p>Email: {{email}}</p>
+<section>
+  <div class="box">
+    <p class="leadin">
+      An email will be sent to <strong>{{email}}</strong> with the following message:
+    </p>
 
-<p>Message:</p>
+    <blockquote>
+      {{message}}
+    </blockquote>
 
-<p>{{message}}</p>
-
-<p>Send at:</p>
-
-<p>{{send_at}}</p>
+    <p class="center">
+      <a href="/" class="button">Schedule another reminder?</a>
+    </p>
+  </div>
+</section>
