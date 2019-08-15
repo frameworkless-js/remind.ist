@@ -9,6 +9,8 @@ const { PORT, APP_NAME } = process.env
 
 module.exports = ({ db }) => {
   const server = createServer(async (request, response) => {
+    const requestStart = Date.now()
+
     const urlTokens = request.url.split('.')
     const extension = urlTokens.length > 1 ? urlTokens[urlTokens.length - 1].toLowerCase().trim() : false
     const serveResponse = extension ? serveStaticFile : serveRoute
@@ -35,6 +37,16 @@ module.exports = ({ db }) => {
         extension: 'html',
         statusCode: errorData.code
       }, response)
+    } finally {
+      if (extension) return
+
+      const ms = Date.now() - requestStart
+      const ua = request.headers['user-agent']
+      const { statusCode } = response
+
+      console.info(
+        `[${new Date().toUTCString()}] – ${statusCode} ${request.method} ${request.url} (${ms}ms) {${ua}}`
+      )
     }
   })
 
@@ -43,11 +55,6 @@ module.exports = ({ db }) => {
     if (error.stack) console.error(error.stack)
 
     process.exit(1)
-  })
-
-  server.on('request', ({ method, url }) => {
-    const now = new Date()
-    console.info(`=> ${now.toUTCString()} – ${method} ${url}`)
   })
 
   server.listen(PORT, async () => {

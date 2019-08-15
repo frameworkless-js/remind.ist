@@ -13,5 +13,6 @@ exports.STATIC_EXTENSIONS = [
   'eot',
   'ttf',
   'woff',
+  'woff2',
   'html'
 ]
