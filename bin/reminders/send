@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+if (!process.env.DATABASE_URL) require('dotenv').config()
+
+const db = require('../../initialisers/postgres')
+const { compile, send } = require('../../emails')
+
+const run = () => new Promise(async resolve => {
+  const now = new Date()
+  now.setUTCHours(0)
+  now.setUTCMinutes(0)
+  now.setUTCSeconds(0)
+  now.setUTCMilliseconds(0)
+
+  console.log(`=> Running mailer job for ${now.toISOString()}`)
+
+  const { rows: reminders } = await db.query(
+    'SELECT * FROM reminders WHERE send_at = $1',
+    [ now ]
+  )
+
+  console.log(`  ${reminders.length} outstanding emails found.`)
+
+  if (reminders.length < 1) {
+    console.log(`  Zoinks – no emails need sending, let's get out of here!`)
+    return resolve()
+  }
+
+  for (const reminder of reminders) {
+    const message = await compile('reminder', reminder)
+
+    await send(message)
+    await db.query('DELETE FROM reminders WHERE reminder_id = $1', [ reminder.reminder_id ])
+  }
+
+  return resolve(0)
+})
+
+run()
+  .then(process.exit)
+  .catch(error => {
+    console.error(error)
+    process.exit(2)
+  })
